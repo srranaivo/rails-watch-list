@@ -13,9 +13,15 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.save
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      puts @list.errors.messages
+      # indique à la vue ce qui s'est passé et lui permet d'afficher les messages d'erreur
+      render :new, status: :unprocessable_entity
+    end
 
-    redirect_to list_path(@list)
+
   end
 
   private

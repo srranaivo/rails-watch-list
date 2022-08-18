@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>Add a new bookmark</h1>
+      <-- ici l'odre est important: on met d'abord le @list car c'est le parent puis le @bookmark car c'est l'enfant-->
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
